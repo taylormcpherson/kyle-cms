@@ -55,6 +55,14 @@ export default defineType({
       group: 'content',
     }),
     defineField({
+      name: 'intro',
+      title: 'Intro text',
+      type: 'markdown',
+      description: 'Introduce the project. This text will be styled differently than the rest of the article body. This is a markdown editor. For help, visit https://www.markdownguide.org/cheat-sheet/',
+      group: 'content',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
       name: 'body',
       title: 'Body',
       type: 'markdown',
