@@ -19,7 +19,6 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
-      group: 'content',
       validation: Rule => Rule.required(),
     }),
     defineField({
@@ -30,7 +29,19 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
-      group: 'content',
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'text',
+      rows: 4,
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: 'image',
+      title: 'Featured image',
+      type: 'image',
       validation: Rule => Rule.required(),
     }),
     defineField({
@@ -42,30 +53,22 @@ export default defineType({
         list: [
           {title: 'SQL', value: 'sql'},
           {title: 'Excel', value: 'excel'},
+          {title: 'R', value: 'r'},
+          {title: 'Tableau', value: 'tableau'},
         ]
       },
       validation: Rule => Rule.unique()
     }),
     defineField({
-      name: 'subtitle',
-      title: 'Subtitle',
-      type: 'text',
-      rows: 4,
-      group: 'content',
-      validation: Rule => Rule.required(),
-    }),
-    defineField({
-      name: 'image',
-      title: 'Featured image',
-      type: 'image',
-      group: 'content',
-      validation: Rule => Rule.required(),
+      name: 'links',
+      title: 'Project links',
+      type: 'array',
+      of: [{type: 'link' }],
     }),
     defineField({
       name: 'publishedAt',
       title: 'Published at',
       type: 'date',
-      group: 'content',
     }),
     defineField({
       name: 'body',
