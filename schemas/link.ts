@@ -1,10 +1,9 @@
-import {defineField, defineType} from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'link',
   title: 'Link',
   type: 'object',
-  
   fields: [
     defineField({
       name: "host",
@@ -17,7 +16,14 @@ export default defineType({
           { title: 'Tableau', value: 'tableau'},
           { title: 'Other', value: 'other'},
         ]
-      }
+      },
+      validation: Rule => Rule.required(),
+    }),
+    defineField({
+      name: "url",
+      title: "URL",
+      type: "url",
+      validation: Rule => Rule.required(),
     }),
     defineField({
       name: 'text',
@@ -25,13 +31,11 @@ export default defineType({
       type: "string",
       hidden: ({ parent }) => parent.host != 'other',
     }),
-    defineField({
-      name: "url",
-      title: "URL",
-      type: "url"
-    }),
   ],
-
-  
+  preview: {
+    select: {
+      title: 'url',
+    },
+  },
 })
 
