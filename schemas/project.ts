@@ -55,6 +55,7 @@ export default defineType({
           {title: 'Excel', value: 'excel'},
           {title: 'R', value: 'r'},
           {title: 'Tableau', value: 'tableau'},
+          {title: 'Python', value: 'python'},
         ]
       },
       validation: Rule => Rule.unique()
